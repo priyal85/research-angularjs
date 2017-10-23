@@ -1,0 +1,29 @@
+<html ng-app="calApp">
+
+   <head>
+      <title>The AngularJS Example</title>
+	  <script type = "text/javascript"  src = "js/angular.js"></script>
+     <script type = "text/javascript"  src = "js/App.js"></script>
+		<!-- CDN import -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script> -->
+   </head>
+
+   <body>
+     <h1>Calculator App</h1>
+    <div ng-controller="calCtrl" >
+  <p>  <input ng-model="operand1" type="text"/> <input ng-model="operand2" type="text"/>   = {{result}} </p>
+    <p> Operation    <button ng-click="add()">+</button> <button ng-click="subtract()">-</button> <button ng-click="multiply()">*</button> <button ng-click="devide()">/</button></p>
+    </div>
+    <!-- <div ng-controller="NestedCtrl2" >
+      <p>Test Value: {{testValue}} </p>
+    </div>
+    <div ng-controller="NestedCtrl3" >
+      <p>Test Value: {{testValue}} </p>
+      <div ng-controller="NestedCtrl4" >
+        <p>Test Value: {{testValue}} </p>
+      </div> -->
+    </div>
+    <a href="calApp2.html">Calculator App 2</a> <br />
+   </body>
+
+</html>

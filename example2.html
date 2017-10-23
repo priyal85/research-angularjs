@@ -1,0 +1,31 @@
+
+<html ng-app="myApp">
+
+   <head>
+      <title>The AngularJS Example</title>
+	  <script type = "text/javascript"  src = "js/angular.js"></script>
+		<!-- CDN import -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script> -->
+   </head>
+
+   <body>
+    <div ng-controller="MainCtrl" >
+      <h2>Dependency Injection and Scope</h2>
+      <p ng-if="hourOfDay < 12"> Good morning</p>
+      <p ng-if="hourOfDay >= 12 && hourOfDay < 16"> Good afternoon</p>
+      <p ng-if="hourOfDay >= 16 && hourOfDay < 18"> Good Evening</p>
+      <p ng-if="hourOfDay >= 18"> Good Night</p>
+      <p > The hour of day is with Expressiom :{{hourOfDay}} </p>
+    </div>
+      <script>
+      console.log(angular);
+      var module = angular.module("myApp",[]);
+      module.controller("MainCtrl",Main);
+      function Main($scope){
+         $scope.hourOfDay = 18;
+        console.log("main function called");
+      }
+      </script>
+   </body>
+
+</html>

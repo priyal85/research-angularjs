@@ -1,0 +1,29 @@
+<html ng-app="BindingExApp">
+
+   <head>
+      <title>The AngularJS Example</title>
+	  <script type = "text/javascript"  src = "js/angular.js"></script>
+     <script type = "text/javascript"  src = "js/App.js"></script>
+		<!-- CDN import -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script> -->
+   </head>
+
+   <body>
+     <h1>Control binding example</h1>
+    <div ng-controller="BindingExCtrl" >
+      <p>Text box: <input ng-model="textValue" type="text"/></p> <br/>
+      <p>Change Text box: <input ng-change="textBoxChange()" ng-model="textValue" type="text"/></p> <br/>
+      <p>Check box: <input ng-model="checkBoxValue" type="checkbox"/></p> <br/>
+      <p>Date: <input ng-model="dateValue" type="date"/></p> <br/>
+      <p>Radio:
+        <input ng-model="radioValue" type="radio" value="Opt1">Option 01</input>
+        <input ng-model="radioValue" type="radio" value="Opt2">Option 02</input>
+        <input ng-model="radioValue" type="radio" value="Opt3">Option 03</input>
+      <p>Textbox Value: {{textValue}} </p>
+      <p>Checkbox Value: {{checkBoxValue}} </p>
+      <p>Date Value: {{dateValue.toLocaleDateString()}} </p>
+      <p>Radio Value: {{radioValue}} </p>
+    </div>
+   </body>
+
+</html>

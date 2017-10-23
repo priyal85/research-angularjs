@@ -1,0 +1,43 @@
+<html ng-app="modulesApp">
+
+   <head>
+      <title>The AngularJS Example</title>
+	  <script type = "text/javascript"  src = "js/angular.js"></script>
+    <script type = "text/javascript"  src = "js/myModule.js"></script>
+    <script type = "text/javascript"  src = "js/App.js"></script>
+    <link ng-if="useStype1" rel="stylesheet" type="text/css" href="css/Style1.css">
+    <link ng-if="useStype2" rel="stylesheet" type="text/css" href="css/Style2.css">
+    <link ng-if="useStype3" rel="stylesheet" type="text/css" href="css/Style3.css">
+    <link ng-if="useStype4" rel="stylesheet" type="text/css" href="css/Style4.css">
+		<!-- CDN import -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script> -->
+   </head>
+
+   <body>
+    <h1>Todo App</h1>
+    <div class="wrapper" >
+      <div id="menubar" ng-controller="MenuCtrl as mc" >
+        <ul id="menulist">
+          <li class="menuitem" ng-click="mc.styleSelected($event)" value="st1">Stylesheet 1</li>
+          <li class="menuitem" ng-click="mc.styleSelected($event)" value="st2">Stylesheet 2</li>
+          <li class="menuitem" ng-click="mc.styleSelected($event)" value="st3">Stylesheet 3</li>
+          <li class="menuitem" ng-click="mc.styleSelected($event)" value="st4">Stylesheet 4</li>
+          <li class="menuitem" ng-click="mc.styleSelected($event)" value="none">No Stylesheet</li>
+        </ul>
+       </div>
+    </div>
+
+    <div ng-controller="TodoCtrl as tc" id="main">
+    <p>Add a box: <input ng-model="tc.newTodo" type="text" ng-keypress="tc.keyPressed($event)"/></p>
+    <button ng-click="tc.addTodo()">Add</button>
+    <p>Your Todos: </p>
+    <button ng-click="tc.toggleEditMode()"><span ng-hide="tc.editMode">Edit</span><span ng-show="tc.editMode">Done</span> </button>
+    <div ng-repeat="i in tc.todoList track by $index">
+      <p><span>{{$index+1}}</span>.<span ng-hide="tc.editMode">{{i}}</span>  <input ng-show="tc.editMode" ng-model="i" type="text" />   <button ng-click="tc.deleteTodo($index)" ng-hide="tc.editMode">Delete</button>    </p>
+    </div>
+    </div>
+
+
+   </body>
+
+</html>

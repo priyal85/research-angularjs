@@ -1,0 +1,36 @@
+<html ng-app="MoreDirectivesApp">
+
+   <head>
+      <title>The AngularJS Example</title>
+	  <script type = "text/javascript"  src = "js/angular.js"></script>
+     <script type = "text/javascript"  src = "js/App2.js"></script>
+		<!-- CDN import -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script> -->
+   </head>
+
+   <body>
+     <h1>More Directives App</h1>
+    <div ng-controller="MoreDirectivesCtrl as m" >
+      <input type="checkbox" ng-model="m.checked"  >  <span ng-show="m.checked">Check off the tick to hide content   </span>
+        <span ng-hide="m.checked">Check the tick to show content  </span></input>
+      <p ng-if="m.checked">Some content message</p>
+
+      <p ng-repeat="i in m.list"> Hello {{i}}     </p>
+      <table>
+        <tr>
+          <th>Index</th>
+          <th>Firstname</th>
+          <th>Age</th>
+        </tr>
+        <tr ng-repeat="i in m.stdList">
+          <td>{{$index+1}}</td>
+          <td>{{i.name}}</td>
+          <td>{{i.age}}</td>
+        </tr>
+      </table>
+    </div>
+
+
+   </body>
+
+</html>

@@ -1,0 +1,39 @@
+
+<html ng-app="myApp">
+
+   <head>
+      <title>The AngularJS Example</title>
+	  <script type = "text/javascript"  src = "js/angular.js"></script>
+		<!-- CDN import -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script> -->
+   </head>
+
+   <body ng-init="hourOfDay = 18">
+    <div ng-controller="MainCtrl" >
+      <h1>Hello</h1>
+      <p ng-if="hourOfDay < 12"> Good morning</p>
+      <p ng-if="hourOfDay > 16"> Good Evening</p>
+      <p > The hour of day is : <span ng-bind="hourOfDay"> </span></p>
+      <p > The hour of day is with Expressiom :{{hourOfDay}} </p>
+      <a href="example2.html">Next (DI & Scope)</a> <br />
+      <a href="clock.html">Clock App</a> <br />
+      <a href="example3.html">Control binding example</a> <br />
+      <a href="nestedCtrl.html">Nested Controller example</a> <br />
+      <a href="controllerAs.html">Nested Controller example</a> <br />
+      <a href="CalApp/calApp.html">Calculator App</a> <br />
+      <a href="MoreDerectives.html">More Derectives App</a> <br />
+      <a href="ModulesTest/ModulesTest.html">Modules Test App</a> <br />
+      <a href="TodoApp/TodoApp.html">Todo App</a> <br />
+
+    </div>
+      <script>
+      console.log(angular);
+      var module = angular.module("myApp",[]);
+      module.controller("MainCtrl",Main);
+      function Main(){
+        console.log("main function called");
+      }
+      </script>
+   </body>
+
+</html>
