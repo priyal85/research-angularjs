@@ -1,0 +1,5 @@
+{
+  "no-browser": true,
+
+  "entry-file": "index.html"
+}
