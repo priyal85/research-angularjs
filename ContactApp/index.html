@@ -1,0 +1,124 @@
+<html ng-app="ContactApp" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>The AngularJS Example</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- <script type = "text/javascript"  src = "js/angular.js"></script> -->
+    <!-- CDN import -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/appname.service.js"></script>
+    <script type="text/javascript" src="js/appConfig.service.js"></script>
+    <script type="text/javascript" src="js/appLog.service.js"></script>
+    <script type="text/javascript" src="js/contactdata.service.js"></script>
+    <script type="text/javascript" src="js/contact.controller.js"></script>
+</head>
+
+<body>
+    <div ng-controller="HeaderCtrl as header">
+        <h1>{{header.appTitle}}</h1>
+        <h3>
+            <span ng-if="header.version > 1">v{{header.version}}</span>
+        </h3>
+        <h4>by {{header.author}}</h4>
+    </div>
+    <div class="container" ng-controller="ContactCtrl as cc">
+        <h2>Available Contacts</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li ng-click="cc.setSelectedContact($index)" class="list-group-item" ng-repeat="contact in cc.contacts">
+                        <span>{{contact.name.first}}</span>
+                        <span>{{contact.name.last}}</li>
+                </ul>
+                <button ng-hide="cc.editMode" ng-click="cc.addButtonClicked()">Add New</button>
+            </div>
+            <div class="col-md-6">
+                <div class="media">
+                    <div class="alert alert-success" ng-if="cc.successMessage">{{cc.successMessage}}</div>
+                    <div class="alert alert-danger" ng-if="cc.errorMessage">{{cc.errorMessage}}</div>
+                    <div class="media-left">
+                        <a ng-show="cc.selectedContact.picture.medium" href="#">
+                            <img ng-src="{{cc.selectedContact.picture.medium}}" />
+                        </a>
+                        <a ng-hide="cc.selectedContact.picture.medium" href="https://placeholder.com">
+                            <img src="http://via.placeholder.com/70x75">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 ng-hide="cc.editMode" class="media-heading">{{cc.selectedContact.name.first+" "+cc.selectedContact.name.last}}</h4>
+                      
+                        <button ng-click="cc.buttonClickAction()">
+                            <span ng-hide="cc.editMode">Edit</span>
+                            <span ng-show="cc.editMode">Save</span>
+                        </button>
+                        <div>
+                            <p ng-show="cc.editMode">
+                                <span>First Name :</span>
+                                <input ng-show="cc.editMode" ng-model="cc.selectedContact.name.first" type="text" />
+                            </p>
+                            <p ng-show="cc.editMode">
+                                <span>Last Name :</span>   
+                                <input ng-show="cc.editMode" ng-model="cc.selectedContact.name.last" type="text" />
+                            </p>
+                            <p>
+                                <h5>Location</h5>
+                            </p>
+                            <p>
+                                <span>Street :</span>
+                                <span ng-hide="cc.editMode">{{cc.selectedContact.location.street}}</span>
+                                <input ng-show="cc.editMode" ng-model="cc.selectedContact.location.street" type="text" />
+                            </p>
+                            <p>
+                                <span>City :</span>
+                                <span ng-hide="cc.editMode">{{cc.selectedContact.location.city}}</span>
+                                <input ng-show="cc.editMode" ng-model="cc.selectedContact.location.city" type="text" />
+                            </p>
+                            <p>
+                                <span>State :</span>
+                                <span ng-hide="cc.editMode">{{cc.selectedContact.location.state}}</span>
+                                <input ng-show="cc.editMode" ng-model="cc.selectedContact.location.state" type="text" />
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <span>Phone :</span>
+                                <span ng-hide="cc.editMode">{{cc.selectedContact.cell}}</span>
+                                <input ng-show="cc.editMode" ng-model="cc.selectedContact.cell" type="text" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+    <a href="index1.html">Same with bootstrap 4</a>
+    <div ng-controller="FooterCtrl as footer">
+        <h6>{{footer.appTitle}}
+            <span ng-if="footer.version > 1">v{{footer.version}} {{footer.buildDate}}</span>.
+            <span>All rights reserved to {{footer.author}}.</span>
+        </h6>
+    </div>
+</body>
+
+</html>
